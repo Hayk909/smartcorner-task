@@ -6,10 +6,6 @@ export default {
     host: process.env.HOST,
     port: process.env.PORT,
   },
-  nuxt: {
-    host: process.env.HOST,
-    port: process.env.PORT,
-  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'smartcornertest',
