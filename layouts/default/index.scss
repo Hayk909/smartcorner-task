@@ -1,0 +1,15 @@
+@import '~/assets/scss/colors.scss';
+
+main {
+  background-color: $layoutColor;
+}
+
+.container {
+  width: 100%;
+}
+
+@media screen and (min-width: 960px) {
+  .container {
+    width: calc(100% - 280px);
+  }
+}

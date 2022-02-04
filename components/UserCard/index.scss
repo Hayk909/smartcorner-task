@@ -1,0 +1,116 @@
+%text-style {
+  letter-spacing: 1px;
+  text-transform: capitalize;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  border-radius: 1em;
+  overflow: hidden;
+  cursor: pointer;
+
+  &__image {
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__info {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    color: white;
+    background-color: rgba(0, 0, 0, .6);
+    flex-direction: column;
+    transition: transform .3s;
+    transform: translateY(100%);
+
+    &__username {
+      font-weight: 700;
+      font-size: 1.3em;
+      margin-bottom: .5em;
+      transition: .3s;
+
+      @extend %text-style;
+    }
+
+    &__location {
+      font-weight: 400;
+      font-size: 1.2em;
+      transition: .3s;
+
+      @extend %text-style;
+    }
+
+    &__icon {
+      position: absolute;
+      top: 1em;
+      right: 1em;
+
+      ion-icon {
+        font-size: 1.5em;
+      }
+    }
+  }
+
+  &:hover>&__info {
+    transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .card {
+    &__info {
+      &__username {
+        font-size: 1em;
+      }
+
+      &__location {
+        font-size: .8em;
+      }
+
+      &__icon {
+        ion-icon {
+          font-size: 1.2em;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .card {
+    height: 150px;
+  }
+}
+
+@media screen and (min-width: 360px) and (max-width: 460px) {
+  .card {
+    &__info {
+      &__username {
+        font-size: .7em;
+      }
+
+      &__location {
+        font-size: .6em;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 500px) and (max-width: 900px) {
+  .card {
+    height: 180px;
+  }
+}
+
+@media screen and (min-width: 900px) and (max-width: 1200px)  {
+  .card {
+    height: 200px;
+  }
+}

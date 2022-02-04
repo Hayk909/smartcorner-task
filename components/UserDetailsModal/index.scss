@@ -1,0 +1,164 @@
+@import '~/assets/scss/colors.scss';
+
+$imageWidth: 200px;
+
+%text-style {
+  text-transform: capitalize;
+  font-size: 1.3em;
+  font-weight: 500;
+  transition: .3s;
+}
+
+.modal-window {
+  position: absolute;
+  top: calc((100vh - 280px) / 2);
+  z-index: 9999;
+  width: 100%;
+  max-width: 90%;
+  background-color: white;
+  overflow: hidden;
+  border-top-left-radius: .3em;
+  border-bottom-left-radius: .3em;
+  transition: transform .4s;
+  transform: scale(0);
+
+
+  .card {
+    position: relative;
+    color: $darkGrey;
+
+    &__image {
+      border-radius: .3em;
+      width: $imageWidth;
+      min-height: 100%;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &__details {
+      padding: 2em;
+      width: calc(100% - $imageWidth);
+
+      &__item {
+        padding: .3em 0;
+        flex-direction: row;
+
+        &__icon {
+          border: 1px solid $darkGrey;
+          border-radius: 50%;
+          width: 35px;
+          height: 35px;
+          margin-right: .5em;
+
+          ion-icon {
+            font-size: 1.1em;
+          }
+        }
+
+        a {
+          text-decoration: none;
+          color: $darkGrey;
+
+          &:hover {
+            color: $grey;
+          }
+        }
+
+        &--typography {
+          @extend %text-style;
+        }
+      }
+    }
+
+    &__icon {
+      position: absolute;
+      top: 1em;
+      right: 1em;
+      cursor: pointer;
+
+      ion-icon {
+        font-size: 2em;
+      }
+    }
+  }
+
+  & + &-overlay {
+    transition: transform .1s;
+    transform: scale(0);
+    background-color: rgba(0, 0, 0, .5);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9998;
+    transition: .1s;
+    position: fixed;
+  }
+
+  &.open {
+    transform: scale(1);
+  }
+
+  &.open + &-overlay {
+    transform: scale(1);
+  }
+
+}
+
+@media screen and (max-width: 1200px) {
+  .modal-window {
+    .card__details__item__icon {
+      & + span,
+      & + a {
+        font-size: 1em !important;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .modal-window {
+    top: calc((100vh - 446px) / 2);
+
+    .card {
+      flex-direction: column;
+
+      &__image {
+        width: 100%;
+      }
+
+      &__details {
+        width: 100%;
+      }
+
+      &__icon {
+        color: white;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 500px) and(max-width: 700px) {
+  .modal-window {
+    max-width: 90%;
+  }
+}
+@media screen and (min-width: 700px) and(max-width: 960px) {
+  .modal-window {
+    max-width: 70%;
+  }
+}
+@media screen and (min-width: 960px) and (max-width: 1200px) {
+  .modal-window {
+    max-width: 50%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .modal-window {
+    max-width: 40%;
+  }
+}

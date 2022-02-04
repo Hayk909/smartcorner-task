@@ -1,0 +1,92 @@
+@import '~/assets/scss/colors.scss';
+
+.toolbar {
+  justify-content: space-between;
+
+  &__icon {
+    opacity: 0;
+    transition: .3s;
+  }
+
+  &__title {
+    color: $grey;
+    pointer-events: none;
+
+    h1 {
+      padding: 0 10px;
+      font-size: 2em;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: currentColor;
+      transition: .3s;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      background-color: currentColor;
+      height: .5em;
+      border-radius: 1em;
+    }
+  }
+}
+
+.users-card-container {
+  padding: 2em 0;
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1em;
+}
+
+@media screen and (min-width: 360px) {
+  .users-card-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .users-card-container {
+    padding: 2em;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .toolbar {
+    &__icon {
+      opacity: 1;
+
+      ion-icon {
+        font-size: 2em;
+      }
+    }
+
+    &__title {
+      h1 {
+        font-size: 1.5em;
+      }
+
+      &::after {
+        height: .3em;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1264px) {
+  .toolbar {
+    padding: 1em 0;
+
+    &__title {
+      h1 {
+        font-size: 3em;
+      }
+    }
+  }
+
+  .users-card-container {
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 3em;
+  }
+}

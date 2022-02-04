@@ -1,0 +1,112 @@
+@import '~/assets/scss/colors.scss';
+
+.navigation-drawer {
+  position: relative;
+  z-index: 9999;
+  width: 280px;
+  min-height: 100vh;
+  padding: 1em;
+  background-color: $drawerColor;
+  transition: .3s;
+  transform: translateX(0);
+
+  &__logo {
+    flex-direction: column;
+    color: $grey;
+    pointer-events: none;
+  }
+
+  &__menu {
+    margin-top: 2em;
+    min-height: calc(100vh - 130px);
+
+    &__item {
+      overflow: hidden;
+      position: relative;
+      list-style: none;
+      margin-top: 1.5em;
+      padding: .7em 1em;
+      border-top: 2px solid grey;
+      border-bottom: 2px solid grey;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 1.2em;
+      letter-spacing: 2px;
+      color: $darkGrey;
+      transition: .3s;
+      cursor: pointer;
+
+      &::after {
+        content: "";
+        display: block;
+        width: 100%;
+        position: absolute;
+        background-color: rgba(0, 0, 0, .3);
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transition: .3s;
+        transform: translateY(100%);
+      }
+
+      &:hover {
+        &::after{
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    padding: 1em;
+    color: $darkGrey;
+    text-transform: capitalize;
+    transition: .3s;
+    transform: translateX(0);
+    cursor: pointer;
+
+    &:hover {
+      transform: translateX(-10px);
+    }
+
+    ion-icon {
+      margin-right: .3em;
+      font-size: 1.5em;
+      transform: rotate(180deg);
+    }
+
+    &--text {
+      font-size: 1.2em;
+      font-weight: 500;
+    }
+  }
+}
+
+.background-overlay {
+  opacity: 0;
+  background-color: rgba(0, 0, 0, .2);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9998;
+  transition: .1s;
+}
+
+@media screen and (max-width: 959.9px) {
+  .navigation-drawer {
+    position: fixed;
+    box-shadow: 1px 3px 7px grey;
+    transform: translateX(-105%);
+
+    &.open {
+      transform: translateX(0);
+
+      & + div.background-overlay {
+        position: fixed;
+        opacity: 1;
+      }
+    }
+  }
+}
