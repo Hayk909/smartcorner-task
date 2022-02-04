@@ -2,6 +2,10 @@ const env = require('dotenv').config()
 
 export default {
   env: env.parsed,
+  server: {
+    host: process.env.HOST,
+    port: process.env.PORT,
+  },
   nuxt: {
     host: process.env.HOST,
     port: process.env.PORT,
@@ -54,7 +58,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: `http://${process.env.HOST}:${process.env.SERVER_PORT}/api`,
+    baseURL: `http://${process.env.HOST}:${process.env.PORT}/api`,
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

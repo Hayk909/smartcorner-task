@@ -12,7 +12,7 @@ const auth = require('./routes/auth')
 app.use('/api/auth', auth)
 app.use('/api/users', users)
 
-const PORT = process.env.SERVER_PORT ?? 3000
+const PORT = process.env.PORT ?? 3000
 
 app.listen(PORT, () => console.log(`API server listening on port ${PORT}`))
 
